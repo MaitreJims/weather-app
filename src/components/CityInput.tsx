@@ -4,12 +4,18 @@ import { IconButton, InputBase, Paper, SxProps, Theme } from '@mui/material';
 import { motion } from 'framer-motion';
 
 export interface CityInputProps {
+  disabled?: boolean;
   placeholder?: string;
   onSubmit?: (value: string) => void;
   sx?: SxProps<Theme>;
 }
 
-const CityInput: FC<CityInputProps> = ({ placeholder, onSubmit, sx = {} }) => {
+const CityInput: FC<CityInputProps> = ({
+  placeholder,
+  disabled,
+  onSubmit,
+  sx = {},
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   return (
     <motion.div
@@ -51,6 +57,7 @@ const CityInput: FC<CityInputProps> = ({ placeholder, onSubmit, sx = {} }) => {
             }
           }}
           placeholder={placeholder}
+          disabled={disabled}
         />
       </Paper>
     </motion.div>

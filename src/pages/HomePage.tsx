@@ -51,6 +51,7 @@ const HomePage = () => {
           sx={{ borderRadius: '2rem', mb: 4 }}
           placeholder="Enter une ville"
           onSubmit={onSubmit}
+          disabled={loading}
         />
         <Zoom in={loading}>
           <CircularProgress />
