@@ -18,6 +18,9 @@ const WeatherCard: FC<WeatherCardProps> = ({ data }) => {
         mt: 6,
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
         borderRadius: '1rem',
+        display: 'grid',
+        gridTemplateColumns: { xs: 'repeat(2, auto)', md: 'repeat(4, auto)' },
+        gridGap: { xs: '1rem', md: '2rem' },
       }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -28,34 +31,30 @@ const WeatherCard: FC<WeatherCardProps> = ({ data }) => {
         ease: 'easeOut',
       }}
     >
-      <Grid container spacing={3}>
-        {[
-          {
-            value: data.tempMax,
-            units: data.tempMaxUnits,
-            label: 'Max',
-          },
-          {
-            value: data.tempMin,
-            units: data.tempMinUnits,
-            label: 'Min',
-          },
-          {
-            value: data.humidity,
-            units: data.humidityUnits,
-            label: 'Humidité',
-          },
-          {
-            value: data.pressure,
-            units: data.pressureUnits,
-            label: 'Pression',
-          },
-        ].map(({ value, label, units }, index) => (
-          <Grid key={index} item xs={6} md={3}>
-            <WeatherInfo value={value} units={units} label={label} />
-          </Grid>
-        ))}
-      </Grid>
+      {[
+        {
+          value: data.tempMax,
+          units: data.tempMaxUnits,
+          label: 'Max',
+        },
+        {
+          value: data.tempMin,
+          units: data.tempMinUnits,
+          label: 'Min',
+        },
+        {
+          value: data.humidity,
+          units: data.humidityUnits,
+          label: 'Humidité',
+        },
+        {
+          value: data.pressure,
+          units: data.pressureUnits,
+          label: 'Pression',
+        },
+      ].map(({ value, label, units }, index) => (
+        <WeatherInfo key={index} value={value} units={units} label={label} />
+      ))}
     </Box>
   );
 };
